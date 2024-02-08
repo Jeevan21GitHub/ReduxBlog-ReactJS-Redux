@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { memo } from 'react'
 import AuthorName from "../users/AuthorName";
 import TimeAgo from "./TimeAgo";
 import ReactionButtons from "./ReactionButtons";
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectPostById } from './postsSlice';
 
-const PostExcerpts = ({ post, onPostRemove }) => {
+
+const PostExcerpts = ({ postId, onPostRemove }) => {
+    const post=useSelector((state)=>selectPostById(state,postId))
     return (
         <div>
 
@@ -31,5 +35,6 @@ const PostExcerpts = ({ post, onPostRemove }) => {
 
     )
 }
+
 
 export default PostExcerpts
